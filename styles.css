@@ -1,0 +1,202 @@
+:root {
+  --bg: #0f1218;
+  --surface: #171c26;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f2f4f8;
+  --muted: #9aa3b5;
+  --accent: #7c9cff;
+  --accent-soft: rgba(124, 156, 255, 0.15);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --radius: 20px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: "Noto Sans KR", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow-x: hidden;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: -40%;
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 30%, rgba(124, 156, 255, 0.18), transparent),
+    radial-gradient(ellipse 40% 35% at 80% 70%, rgba(255, 140, 180, 0.1), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 380px;
+  background: linear-gradient(145deg, rgba(30, 36, 48, 0.95), rgba(20, 24, 32, 0.98));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem 1.75rem;
+  box-shadow: var(--shadow);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+.card__header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 108px;
+  height: 124px;
+  border-radius: 50% 50% 48% 48% / 42% 42% 58% 58%;
+  background: linear-gradient(180deg, var(--accent-soft), transparent);
+  border: 2px solid rgba(124, 156, 255, 0.25);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.avatar__svg {
+  width: 104px;
+  height: auto;
+  display: block;
+  margin-top: 2px;
+}
+
+.card__titles {
+  min-width: 0;
+}
+
+.name {
+  margin: 0 0 0.35rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.35;
+}
+
+.tagline {
+  margin: 0 0 1.5rem;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border-left: 3px solid var(--accent);
+}
+
+.tagline p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.contacts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.contact:hover,
+.contact:focus-visible {
+  background: rgba(124, 156, 255, 0.12);
+  border-color: rgba(124, 156, 255, 0.35);
+  outline: none;
+}
+
+.contact__icon {
+  font-size: 1rem;
+  opacity: 0.85;
+  width: 1.25rem;
+  text-align: center;
+}
+
+.contact__text {
+  font-size: 0.88rem;
+  word-break: break-all;
+}
+
+.contact__icon--svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+}
+
+.contact__icon--svg svg {
+  display: block;
+}
+
+.contact--linkedin:hover,
+.contact--linkedin:focus-visible {
+  background: rgba(10, 102, 194, 0.18);
+  border-color: rgba(10, 102, 194, 0.55);
+}
+
+.contact--youtube:hover,
+.contact--youtube:focus-visible {
+  background: rgba(255, 48, 64, 0.16);
+  border-color: rgba(255, 48, 64, 0.5);
+}
+
+@media (max-width: 360px) {
+  .card__header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .card__titles {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
